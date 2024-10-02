@@ -1,0 +1,276 @@
+/* Add Font Face */
+@font-face {
+    font-family: 'Ethnocentric';
+    src: url('fonts/smctfont.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* General Styles */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    /* background-color: #ffffff; */
+    margin: 0;
+}
+
+/* Loader Container */
+#loader {
+    position: relative;
+    width: 300px;
+    /* Wider for oval shape */
+    height: 150px;
+    /* Shorter for oval shape */
+}
+
+/* Background Layers */
+#redBackground,
+#blueBackground,
+#whiteBackground,
+#yellowBackground {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+#redBackground {
+    background-color: rgb(255 0 0);
+}
+
+#blueBackground {
+    background-color: rgb(0 0 228);
+    width: 96.5%;
+    height: 96.5%;
+}
+
+#whiteBackground {
+    background-color: #ffffff;
+    width: 90%;
+    height: 90%;
+}
+
+#yellowBackground {
+    background-color: rgb(255 255 0);
+    width: 95%;
+    height: 95%;
+    text-align: center;
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* SMCT Pulse Animation by Letter */
+#smct {
+    color: rgb(0 0 228);
+    font-family: 'Ethnocentric', sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    display: flex;
+    margin: 0;
+}
+
+.letter {
+    animation: pulse 1.5s ease-in-out infinite;
+    animation-delay: calc(var(--index) * 0.2s);
+    /* Different delay for each letter */
+}
+
+/* Group of Companies Style */
+#groupOfCompanies {
+    color: rgb(0 0 228);
+    font-family: 'Ethnocentric', sans-serif;
+    font-size: 11px;
+    margin: 0;
+}
+
+/* Keyframes for SMCT Pulse */
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+
+/* Progress Bar Container */
+#progressBarContainer {
+    position: relative;
+    width: 300px;
+    height: 15px;
+    border: 1px solid rgb(0 0 228);
+    border-radius: 25px;
+    background-color: #ffffff;
+    /* overflow: hidden; */
+    margin-top: 20px;
+    z-index: 1;
+}
+
+/* Progress Bar */
+#progressBarFill {
+    position: absolute;
+    /* Changed to absolute for the filling effect */
+    bottom: 0;
+    /* Align to the bottom of the container */
+    left: 0;
+    height: 100%;
+    border-radius: 5px;
+    background-color: rgb(0 0 228);
+    /* Color of the filled portion */
+    width: 0;
+    /* Start at 0% width */
+    animation: fillProgressBar 5s linear infinite;
+    /* Infinite fill animation */
+}
+
+/* Motorcycle Container */
+#motorcycleContainer {
+    position: absolute;
+    bottom: -15px;
+    animation: moveMotorcycle 5s linear infinite;
+    z-index: 10;
+}
+
+/* Motorcycle Image */
+#motorcycle {
+    width: 50px;
+    /* Adjust the size as needed */
+    height: auto;
+
+}
+
+/* Loading Text */
+#loadingText {
+    font-family: 'Ethnocentric', sans-serif;
+    position: absolute;
+    /* Positioning it within the progress bar */
+    top: 50%;
+    /* Center vertically */
+    left: 50%;
+    /* Center horizontally */
+    transform: translate(-50%, -50%);
+    /* Adjust to truly center the text */
+    color: #ffffff;
+    /* Color of the text */
+    font-size: 10px;
+    /* Size of the text */
+    white-space: nowrap;
+    /* Prevent text wrapping */
+    z-index: 2;
+    /* Ensure it is above the progress bar fill */
+}
+
+/* Smoke Effect */
+.smoke {
+    position: absolute;
+    bottom: 10px;
+    /* Adjust to align with motorcycle */
+    margin-left: -25px;
+    /* Start off-screen */
+    width: 12px;
+    height: 12px;
+    background-color: rgba(128, 128, 128, 0.7);
+    border-radius: 50%;
+    animation: smokeEffect 2s ease-in-out infinite;
+    animation-delay: calc(var(--index) * 0.5s);
+    /* Different delay for each smoke */
+    opacity: 0;
+}
+
+
+@keyframes fillProgressBar {
+    from {
+        width: 0;
+        /* Start from 0 */
+    }
+
+    to {
+        width: 100%;
+        /* Fill to 100% */
+    }
+}
+
+/* Keyframes for Moving Motorcycle */
+@keyframes moveMotorcycle {
+    0% {
+        left: -40px;
+        /* Start off-screen */
+    }
+
+    100% {
+        left: 92%;
+        /* Move off-screen on the right */
+    }
+}
+
+/* Keyframes for Fade In and Out */
+@keyframes fadeInOut {
+
+    0%,
+    100% {
+        opacity: 0.1;
+        /* Start and end invisible */
+    }
+
+    10%,
+    90% {
+        opacity: 1;
+        /* Fully visible for a brief moment */
+    }
+}
+
+/* Keyframes for Smoke Effect */
+@keyframes smokeEffect {
+    0% {
+        transform: scale(0.5);
+        opacity: 0.8;
+        left: 30px;
+        /* Start from off-screen left */
+    }
+
+    10% {
+        opacity: 0.8;
+        /* Keep smoke visible for a brief moment */
+    }
+
+    50% {
+        transform: scale(1);
+        opacity: 0.4;
+        left: -15px;
+        /* Move slightly right to follow the motorcycle */
+    }
+
+    100% {
+        transform: scale(1.2);
+        opacity: 0;
+        left: -100%;
+        /* Move off-screen on the right */
+        bottom: 50px;
+        /* Smoke rises up */
+    }
+}
+
+/* Position each smoke element in a row */
+.smoke:nth-child(2) {
+    animation-delay: 0.5s;
+    /* Adjust for second smoke */
+}
+
+.smoke:nth-child(3) {
+    animation-delay: 1s;
+    /* Adjust for third smoke */
+}
