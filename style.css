@@ -147,9 +147,11 @@ body {
 
 /* Motorcycle Image */
 #motorcycle {
-    width: 50px;
+    width: 70px;
     /* Adjust the size as needed */
     height: auto;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
 
 }
 
@@ -179,7 +181,7 @@ body {
     position: absolute;
     bottom: 10px;
     /* Adjust to align with motorcycle */
-    margin-left: -25px;
+    margin-left: -33px;
     /* Start off-screen */
     width: 12px;
     height: 12px;
